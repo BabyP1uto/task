@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Счетчик кликов</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        #but, #resetBut {
+            padding: 10px 17px;
+            font-size: 18px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 5px;
+        }
+
+        #but:hover, #resetBut:hover {
+            background-color: #0056b3;
+        }
+
+        #count {
+            margin-top: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <button id="but">Клик!</button>
+    <button id="resetBut">Сбросить</button>
+    <p id="count">Количество кликов: 0</p>
+    <script>
+        let button = document.getElementById("but");
+        let resetButton = document.getElementById("resetBut");
+        let clickCount = document.getElementById("count");
+
+        let count = localStorage.getItem('clickCount') ? Number(localStorage.getItem('clickCount')) : 0;
+        clickCount.textContent = `Количество кликов: ${count}`;
+
+        button.addEventListener("click", function() {
+            count++;
+            localStorage.setItem('clickCount', count);
+            clickCount.textContent = `Количество кликов: ${count}`;
+        });
+
+        resetButton.addEventListener("click", function() {
+            count = 0;
+            localStorage.removeItem('clickCount');
+            clickCount.textContent = `Количество кликов: ${count}`;
+        });
+    </script>    
+</body>
+</html>

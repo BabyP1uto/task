@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создание списка</title>
+    <style>
+        ul {
+            list-style-type: none;
+            padding: 0;
+            max-width: 200px;
+            margin: 20px auto;
+            border: 2px solid #4CAF50;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        li {
+            background-color: #e8f5e9;
+            padding: 10px;
+            border-bottom: 1px solid #4CAF50;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            color: #2e7d32;
+        }
+
+        li:last-child {
+            border-bottom: none;
+        }
+
+        button {
+            display: block;
+            width: 100px;
+            margin: 10px auto;
+            padding: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            color: white;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #388e3c;
+        }
+
+        button:active {
+            background-color: #2e7d32;
+        }
+    </style>
+</head>
+<body>
+    <ul id="myList"></ul>
+    <button id="addButton">Добавить элемент</button>
+    <button id="removeButton">Удалить элемент</button>
+
+    <script>
+        const myList = document.getElementById("myList");
+        const addButton = document.getElementById("addButton");
+        const removeButton = document.getElementById("removeButton");
+
+        addButton.addEventListener("click", () => {
+            const newItem = document.createElement("li");
+            newItem.textContent = "Элемент списка";
+            myList.appendChild(newItem);
+        });
+
+        removeButton.addEventListener("click", () => {
+            if (myList.lastChild) {
+                myList.removeChild(myList.lastChild);
+            }
+        });
+    </script>
+</body>
+</html>
